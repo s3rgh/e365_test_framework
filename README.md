@@ -1,5 +1,26 @@
 blueprint for readme
 
+Для запуска выполнить:
+
+    git clone https://stash.elewise.com/scm/e3q/e365.git
+    mvn clean install
+    mvn allure:serve
+
+
+
+`mvn clean install` - выполнить `clean` в каждом модуле перед запуском `install` для каждого модуля. Это позволяет очистить все скомпилированные файлы, которые у вас есть, убедившись, что вы действительно компилируете каждый модуль с нуля.
+
+`mvn allure:serve` - для формирования allure report
+
+`mvn verify` - будем использовать для подготовки cucumber report, если потребуется
+
+
+
+[maven  docs](https://maven.apache.org/)
+
+[cucumber docs](https://cucumber.io/docs/installation/)
+
+[selenium docs](https://www.selenium.dev/documentation/en/)
 
 # E365_TEST_FRAMEWORK
 
@@ -177,11 +198,4 @@ Or by setting system properties in `pom.xml`
     </plugins>
 </build>
 ```
-
-
-
-
-
 </details>
-
-
