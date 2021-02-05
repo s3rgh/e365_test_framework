@@ -3,6 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.assertj.core.api.Assertions.*;
@@ -10,21 +13,17 @@ import static org.assertj.core.api.Assertions.*;
 public class BasePage {
 
     protected WebDriver driver;
-    public WebDriverWait wait;
+    protected WebDriverWait wait;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(this.driver, 5);
+        PageFactory.initElements(this.driver, this);
+    }
 
     //Wait Wrapper Method  by element located By
     public void waitVisibility(By elementBy) {
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
-    }
-
-    public void waitVisibility(WebElement element) {
-       // wait.until(ExpectedConditions.visibilityOfElementLocated((By) element));
-    }
-
-    //Click Method by element located By
-    public void click(By elementBy) {
-        waitVisibility(elementBy);
-        driver.findElement(elementBy).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
     }
 
     //Is Element located By  Displayed
@@ -33,16 +32,8 @@ public class BasePage {
         assertThat(driver.findElement(elementBy).isDisplayed()).isEqualTo(true);
     }
 
-    public void waitForFilling(By elementBy) {
-       // wait.until(ExpectedConditions.elementToBeClickable(elementBy));
-    }
-
-    //Write Text in field located By
-    public void writeText(By elementBy, String text) {
-        waitVisibility(elementBy);
-        WebElement element = driver.findElement(elementBy);
-        element.clear();
-        element.sendKeys(text);
+    public void isElementDisplayed(WebElement webElement) {
+        assertThat(webElement.isDisplayed()).isEqualTo(true);
     }
 
     public void setTextInLabel(String textLabel, String text) {
@@ -52,18 +43,16 @@ public class BasePage {
         el.sendKeys(text);
     }
 
-    /*public void setTextInLabelOnElement(String textLabel, String text) {
-        WebElement el = webElement.findElement(By.xpath("//label[text()='" + textLabel + "']/preceding-sibling::input"));
-        System.out.println(el.getTagName());
-        System.out.println(el.isSelected());
-        el.sendKeys(text);
-    }*/
-
     public void isElementNotDisplayed(By elementBy) {
         assertThat(driver.findElements(elementBy).isEmpty()).isEqualTo(true);
     }
 
     public void isAlertText(String message) {
         assertThat(driver.switchTo().alert().getText()).isEqualTo(message);
+    }
+
+    public void moveToElement(WebElement webElement) {
+        Actions builder = new Actions(driver);
+        builder.moveToElement(webElement).build().perform();
     }
 }
