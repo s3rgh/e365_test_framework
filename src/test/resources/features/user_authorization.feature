@@ -48,3 +48,7 @@ Feature: Авторизация пользователя
     And Нажать кнопку "Выйти"
     And Нажать ОК
     Then Открыта главная страница
+
+
+    Scenario: Test
+      Given open start page "https://s-elma365.com"

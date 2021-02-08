@@ -5,9 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.support.PageFactory;
 import pages.MainPage;
-
 
 public class MainPageSteps extends TestBase {
 

@@ -17,7 +17,6 @@ public class StartPage extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-
     @FindBy(xpath = "/html/head/title")
     WebElement pageTitle;
 

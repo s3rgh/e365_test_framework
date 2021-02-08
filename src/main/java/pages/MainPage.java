@@ -18,7 +18,6 @@ public class MainPage extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-
     @FindBy(xpath = "//h1[@class='title' and contains(text(),'Добро пожаловать в ELMA365')]")
     WebElement titleWelcomeTo365;
 
@@ -44,7 +43,6 @@ public class MainPage extends BasePage {
 
     public void goToButtonUserProfile() {
         wait.until(ExpectedConditions.visibilityOf(openUserProfileButton));
-        //moveToElement(openUserProfileButton);
         openUserProfileButton.click();
     }
 
