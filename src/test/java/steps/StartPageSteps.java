@@ -47,6 +47,11 @@ public class StartPageSteps extends TestBase {
         startPage.goToButtonEnter();
     }
 
+    @And("hover mouseCursor to email enter")
+    public void hoverMouseCursorToEmailEnter() {
+        startPage.goToEmailEnter();
+    }
+
     @And("enter your login {string} and password {string}")
     public void enterYourLoginAndPassword(String login, String password) {
         startPage.setEnterLoginAndPassword(login, password);
