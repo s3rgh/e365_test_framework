@@ -1,4 +1,4 @@
-Feature: Авторизация пользователя
+Feature: Кнопки левого меню
 
   Scenario: Переход в календарь по кнопке из левого меню
     Given open start page "https://s-elma365.com"
@@ -7,11 +7,4 @@ Feature: Авторизация пользователя
     And enter your login "Krouwander@yandex.ru" and password "matVcxzqwe1"
     And click button Enter
     When Открыта главная страница
-    And нажать кнопку левого меню "Календарь"
-
-    """And Нажать кнопку профиля
-    And Нажать кнопку для выхода "Выйти"
-    And Нажать ОК
-    Then Открыта главная страница """
-
-
+    And Нажать кнопку левого меню "Календарь"
