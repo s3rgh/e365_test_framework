@@ -6,4 +6,12 @@ Feature: Авторизация пользователя
     And hover mouseCursor to button enter
     And enter your login "Krouwander@yandex.ru" and password "matVcxzqwe1"
     And click button Enter
-    Then Открыта главная страница
+    When Открыта главная страница
+    And нажать кнопку левого меню "Календарь"
+
+    """And Нажать кнопку профиля
+    And Нажать кнопку для выхода "Выйти"
+    And Нажать ОК
+    Then Открыта главная страница """
+
+

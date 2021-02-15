@@ -48,6 +48,16 @@ public class MainPageSteps extends TestBase {
         mainPage.clickButtonOnUserProfilePopOver(button);
     }
 
+    @And("Нажать кнопку для выхода {string}")
+    public void clickExitButton(String button) {
+        mainPage.clickButtonExitOnUserProfilePopOver(button);
+    }
+
+    @And("Нажать кнопку левого меню {string}")
+    public void clickMenuButton(String button) {
+        mainPage.clickButtonOnMenuPopOver(button);
+    }
+
     @When("открыт Exit Dialog")
     public void isExitDialogOpen() {
         mainPage.isElementDisplayed();

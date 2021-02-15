@@ -52,6 +52,18 @@ public class MainPage extends BasePage {
         buttonExit.click();
     }
 
+    public void clickButtonExitOnUserProfilePopOver(String button) {
+        WebElement buttonExit = driver.findElement(By.xpath("//span[text()='" + button +"']"));
+        wait.until(ExpectedConditions.visibilityOf(buttonExit));
+        buttonExit.click();
+    }
+
+    public void clickButtonOnMenuPopOver(String button) {
+        WebElement buttonmenu = driver.findElement(By.xpath("//span[contains(text(),'" + button +"')]"));
+        wait.until(ExpectedConditions.visibilityOf(buttonmenu));
+        buttonmenu.click();
+    }
+
     public void submitExitDialog() {
         assertThat(systemExitDialog.isDisplayed()).isEqualTo(true);
         WebElement buttonOk = systemExitDialog.findElement(By.xpath("//button[text()='ОК']"));
