@@ -22,7 +22,7 @@ public class StartPageSteps extends TestBase {
         tearDown();
     }
 
-    @Given("open start page {string}")
+    @Given("Open start page {string}")
     public void openPage(String arg0) {
         startPage.openURL(arg0);
     }
@@ -32,38 +32,63 @@ public class StartPageSteps extends TestBase {
         startPage.isInitialized();
     }
 
-    @And("click button")
-    public void clickButton() {
-        startPage.clickButton();
+    @And("Click submit button {string}")
+    public void clickButton(String buttonName) {
+        startPage.clickSubmitButton(buttonName);
     }
 
-    @And("enter your name {string} to field {string}")
+    @And("Enter your data {string} to field {string}")
     public void enterYourNameToField(String name, String field) {
         startPage.setTextInLabel(name, field);
     }
 
-    @And("hover mouseCursor to button enter")
+    @And("Hover mouseCursor to button enter")
     public void hoverMouseCursorToButtonEnter() {
         startPage.goToButtonEnter();
     }
 
-    @And("enter your login {string} and password {string}")
+    @And("Enter your login {string} and password {string}")
     public void enterYourLoginAndPassword(String login, String password) {
         startPage.setEnterLoginAndPassword(login, password);
     }
 
-    @And("click button Enter")
+    @And("Click button Enter")
     public void clickButtonEnter() {
         startPage.pushEnterButton();
     }
 
-    @And("select remember me checkBox")
+    @And("Select remember me checkBox")
     public void selectCheckBox() {
         startPage.selectRememberMeCheckBox();
     }
 
-    @Then("E-mail или пароль указан не верно")
+    @Then("Email or password is incorrect")
     public void isEmailOrPasswordCorrect() {
         startPage.isElementDisplayed();
+    }
+
+    @And("Choose item {string} in list on label {string}")
+    public void chooseElementInList(String text, String label) {
+        startPage.chooseItemInListOnLabel(text, label);
+    }
+
+    @And("Accept the terms of the user agreement")
+    public void acceptTheTermsOfTheUserAgreement() {
+        startPage.acceptTermsOfUserAgreement();
+    }
+
+    @And("Click try button")
+    public void clickTryButton() {
+        startPage.clickTryButton();
+    }
+
+    @Then("Element is displayed")
+    public void elementIsDisplayed() {
+        startPage.isElementDisplayed();
+    }
+
+    @Then("Success reg message is displayed")
+    public void isSuccessRegMessageDisplayed() {
+        startPage.isSuccessRegMessageDisplayed();
     }
 }
