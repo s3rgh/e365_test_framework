@@ -1,8 +1,11 @@
 package steps;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +20,10 @@ public class TestBase {
         }
 
         WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
-
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+        options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+        webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
@@ -28,6 +33,6 @@ public class TestBase {
     }
 
     public void tearDown() {
-       // webDriver.quit();
+        // webDriver.quit();
     }
 }

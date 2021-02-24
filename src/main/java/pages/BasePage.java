@@ -33,6 +33,7 @@ public class BasePage {
     }
 
     public void isElementDisplayed(WebElement webElement) {
+        wait.until(ExpectedConditions.visibilityOf(webElement));
         assertThat(webElement.isDisplayed()).isEqualTo(true);
     }
 
