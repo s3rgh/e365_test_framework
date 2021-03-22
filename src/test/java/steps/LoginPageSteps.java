@@ -24,4 +24,9 @@ public class LoginPageSteps extends TestBase {
     public void isButtonAvailable(String string) {
         loginPage.isButtonAvailable(string);
     }
+
+    @Then("Login title text is displayed")
+    public void loginTitleTextIsDisplayed() {
+        loginPage.isTitleAvailable();
+    }
 }

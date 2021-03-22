@@ -43,9 +43,9 @@ Feature: Авторизация пользователя
     And   Profile popover is opened
     And   Click user profile button "Выйти"
     When  Dialog is opened
-    And   Click dialog button "Отмена"
+    And   Click dialog button "О1тмена"
     And   Click profile button
     And   Click user profile button "Выйти"
     When  Dialog is opened
     And   Click dialog button "ОК"
-    Then  Button "Войти в систему" is displayed
+    Then  Login title text is displayed

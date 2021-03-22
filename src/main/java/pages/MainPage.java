@@ -81,8 +81,20 @@ public class MainPage extends BasePage {
     }
 
     public void isInitialized() {
-        /*wait.until(ExpectedConditions.visibilityOf(titleWelcomeTo365));
-        assertThat(titleWelcomeTo365.isDisplayed()).isEqualTo(true);*/
+
+        try {
+            WebElement popup = driver.findElement(By.cssSelector("p-dialog > div > div"));
+            if (popup.isDisplayed()) {
+                Actions actions = new Actions(driver);
+                actions
+                        .moveToElement(systemDialog.findElement(By.xpath("//div[@role='dialog']/descendant::*[contains(text(), 'Нет')]")))
+                        .click()
+                        .perform();
+            }
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+
         JavascriptExecutor input = (JavascriptExecutor) driver;
         assertThat(input.executeScript("return document.readyState").equals("complete")).isEqualTo(true);
     }
@@ -218,15 +230,15 @@ public class MainPage extends BasePage {
         newText = text.replace("@", System.currentTimeMillis() + "@");
         WebElement input = driver.
                 //findElement(By.xpath("//*[contains(text(),'" + field + "')]/parent::elma-form-label[@class='elma-form-label ng-star-inserted']/following-sibling::elma-form-control/descendant::input"));
-                findElement(By.xpath("//*[contains(text(),'" + field + "')]/ancestor::elma-form-label/following-sibling::elma-form-control/descendant::input"));
+                        findElement(By.xpath("//*[contains(text(),'" + field + "')]/ancestor::elma-form-label/following-sibling::elma-form-control/descendant::input"));
 
         Actions actions = new Actions(driver);
         actions.moveToElement(input)
-               .click()
-               .perform();
+                .click()
+                .perform();
 
         actions.sendKeys(newText)
-               .perform();
+                .perform();
     }
 
     public void IsUserCreated() {
