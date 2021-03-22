@@ -6,14 +6,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainPage extends BasePage {
+
+    protected static Logger logger = LoggerFactory.getLogger(MainPage.class);
 
     @FindBy(xpath = "//h1[@class='title' and contains(text(),'Добро пожаловать в ELMA365')]")
     WebElement titleWelcomeTo365;
@@ -83,16 +88,13 @@ public class MainPage extends BasePage {
     public void isInitialized() {
 
         try {
+            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             WebElement popup = driver.findElement(By.cssSelector("p-dialog > div > div"));
             if (popup.isDisplayed()) {
-                Actions actions = new Actions(driver);
-                actions
-                        .moveToElement(systemDialog.findElement(By.xpath("//div[@role='dialog']/descendant::*[contains(text(), 'Нет')]")))
-                        .click()
-                        .perform();
+                popup.findElement(By.xpath("//div[@role='dialog']/descendant::*[contains(text(), 'Нет')]")).click();
             }
         } catch (NoSuchElementException e) {
-            e.printStackTrace();
+            logger.info("!!!Timezone Popup doesn't shown!!!");
         }
 
         JavascriptExecutor input = (JavascriptExecutor) driver;
