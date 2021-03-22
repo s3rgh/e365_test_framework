@@ -141,10 +141,12 @@ public class MainPage extends BasePage {
     }
 
     public void clickLeftMenuButtonAddUnit() {
+        wait.until(ExpectedConditions.visibilityOf(leftMenuButtonAddUnit));
         leftMenuButtonAddUnit.click();
     }
 
     public void clickStaticSettingsButton() {
+        wait.until(ExpectedConditions.visibilityOf(staticButtonSettings));
         staticButtonSettings.click();
     }
 

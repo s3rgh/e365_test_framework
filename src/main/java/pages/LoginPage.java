@@ -14,6 +14,7 @@ public class LoginPage extends BasePage {
     }
 
     public void isButtonAvailable(String string) {
-        isElementDisplayed(driver.findElement(By.xpath("//button[contains(text(),'" + string + "')]")));
+        //isElementDisplayed(driver.findElement(By.xpath("//button[contains(text(),'" + string + "')]")));
+        isElementDisplayed(driver.findElement(By.cssSelector("div.form-content__submit > button")));
     }
 }
