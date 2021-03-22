@@ -56,8 +56,8 @@ Feature: Верхнее меню
     And     Click button "Создать"
     And     Settings popover is opened
     And     Click popover button "Test"
-    And     Click popover button "check"
-    And     Modal form "check" is opened
+    And     Click popover button "test_app"
+    And     Modal form "test_app" is opened
     And     Fill modal form field "Название" with text "name@"
     And     Click button "Сохранить"
     Then    Message "успешно создан" is shown

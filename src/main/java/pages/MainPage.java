@@ -82,8 +82,10 @@ public class MainPage extends BasePage {
     }
 
     public void isInitialized() {
-        wait.until(ExpectedConditions.visibilityOf(titleWelcomeTo365));
-        assertThat(titleWelcomeTo365.isDisplayed()).isEqualTo(true);
+        /*wait.until(ExpectedConditions.visibilityOf(titleWelcomeTo365));
+        assertThat(titleWelcomeTo365.isDisplayed()).isEqualTo(true);*/
+        JavascriptExecutor input = (JavascriptExecutor) driver;
+        assertThat(input.executeScript("return document.readyState").equals("complete")).isEqualTo(true);
     }
 
     public void goToButtonUserProfile() {
@@ -121,7 +123,6 @@ public class MainPage extends BasePage {
         Actions actions = new Actions(driver);
         actions
                 .moveToElement(systemDialog.findElement(By.xpath("//div[@role='dialog']/descendant::*[contains(text(), '" + buttonName + "')]")))
-                //.moveToElement(systemDialog.findElement(By.xpath("//button[text()='" + buttonName + "']")))
                 .click()
                 .perform();
     }
@@ -159,10 +160,12 @@ public class MainPage extends BasePage {
     }
 
     public void clickLeftMenuButtonAddUnit() {
+        wait.until(ExpectedConditions.visibilityOf(leftMenuButtonAddUnit));
         leftMenuButtonAddUnit.click();
     }
 
     public void clickStaticSettingsButton() {
+        wait.until(ExpectedConditions.visibilityOf(staticButtonSettings));
         staticButtonSettings.click();
     }
 
@@ -189,21 +192,23 @@ public class MainPage extends BasePage {
     public void clickUnit(String unitName) {
         WebElement unit = driver.findElement(By.xpath("//a[@title='" + unitName + "']"));
         wait.until(ExpectedConditions.visibilityOf(unit));
-        Actions actions = new Actions(driver);
+        /*Actions actions = new Actions(driver);
         actions
                 .moveToElement(unit)
                 .click()
-                .perform();
+                .perform();*/
+        unit.click();
     }
 
     public void clickApp(String appName) {
         WebElement app = driver.findElement(By.xpath("//a/child::span[contains(text(), '" + appName + "')]"));
         wait.until(ExpectedConditions.visibilityOf(app));
-        Actions actions = new Actions(driver);
+        /*Actions actions = new Actions(driver);
         actions
                 .moveToElement(app)
                 .click()
-                .perform();
+                .perform();*/
+        app.click();
     }
 
     public void isAppOpened(String appName) {
