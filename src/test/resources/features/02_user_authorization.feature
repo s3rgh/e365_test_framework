@@ -43,7 +43,7 @@ Feature: Авторизация пользователя
     And   Profile popover is opened
     And   Click user profile button "Выйти"
     When  Dialog is opened
-    And   Click dialog button "О1тмена"
+    And   Click dialog button "Отмена"
     And   Click profile button
     And   Click user profile button "Выйти"
     When  Dialog is opened
