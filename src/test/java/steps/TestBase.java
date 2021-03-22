@@ -19,10 +19,16 @@ public class TestBase {
             return;
         }
 
-        WebDriverManager.chromedriver().setup();
+
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1366x768");
         options.addArguments("--disable-notifications");
         options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+        WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
