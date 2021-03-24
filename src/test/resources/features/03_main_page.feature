@@ -8,6 +8,7 @@ Feature: ELMA 365 ГЛАВНАЯ СТРАНИЦА
     And   Enter your login "s3rgh+6@mail.ru" and password "ZAQxsw123"
     And   Click button Enter
 
+
     # Используя кнопку на основной странице
   Scenario: Добавить раздел с главной страницы
     Given   Main page is opened
@@ -17,6 +18,7 @@ Feature: ELMA 365 ГЛАВНАЯ СТРАНИЦА
     And     Fill dialog field "Название Раздела" with text "Test"
     And     Click dialog button "Создать"
     Then    Unit created
+
 
     # Используя кнопку в левом меню
   Scenario: Добавить раздел по кнопке в левом меню
@@ -28,10 +30,12 @@ Feature: ELMA 365 ГЛАВНАЯ СТРАНИЦА
     And     Click dialog button "Создать"
     Then    Unit created
 
+
   Scenario: Перейти в приложения с главной страницы
     Given   Main page is opened
     And     Open unit "Компания"
     Then    Unit "Компания" is opened
+
 
   Scenario: Настроить страницу в две колонки
     Given   Main page is opened
@@ -43,6 +47,7 @@ Feature: ELMA 365 ГЛАВНАЯ СТРАНИЦА
     And     Click dialog button "Сохранить"
     Then    Two column is displayed
 
+
   Scenario: Настроить страницу в одну колонку
     Given   Main page is opened
     And     Click button settings
@@ -52,6 +57,7 @@ Feature: ELMA 365 ГЛАВНАЯ СТРАНИЦА
     And     Click dialog button "Одна колонка"
     And     Click dialog button "Сохранить"
     Then    One column is displayed
+
 
   # Добавить пользователя с главной страницы
   Scenario: Добавить пользователя с главной страницы
@@ -65,7 +71,6 @@ Feature: ELMA 365 ГЛАВНАЯ СТРАНИЦА
     And     Fill modal form field "Эл. почта" with text "vasya@mailinator.com"
     And     Click button "Выслать приглашение"
     Then    User is created
-
 
 
   # Перейти в чат технической поддержки с главной страницы

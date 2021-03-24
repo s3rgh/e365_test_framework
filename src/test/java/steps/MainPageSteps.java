@@ -37,11 +37,6 @@ public class MainPageSteps extends TestBase {
         mainPage.isProfilePopOverDisplayed();
     }
 
-   /* @And("Нажать кнопку {string}")
-    public void clickButton(String button) {
-        mainPage.clickButtonOnUserProfilePopOver(button);
-    }*/
-
     @And("Click user profile button {string}")
     public void clickButtonOnUserProfilePopOver(String buttonName) {
         mainPage.clickButtonOnUserProfilePopOver(buttonName);
@@ -57,10 +52,10 @@ public class MainPageSteps extends TestBase {
         mainPage.clickButtonOnMenuPopOver(button);
     }
 
- /*   @When("открыт Exit Dialog")
+    @When("открыт Exit Dialog")
     public void isExitDialogOpen() {
         mainPage.isElementDisplayed();
-    }*/
+    }
 
     @When("Dialog is opened")
     public void isDialogOpened() {

@@ -8,6 +8,7 @@ Feature: Авторизация пользователя
     And   Click button Enter
     Then  Main page is opened
 
+
   Scenario Outline: Авторизация пользователя с НЕКОРРЕКТНЫМИ учетными данными
     Given Open start page "https://s-elma365.com"
     When  Start page is opened

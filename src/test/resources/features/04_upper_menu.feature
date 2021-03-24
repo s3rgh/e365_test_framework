@@ -8,6 +8,7 @@ Feature: Верхнее меню
     And   Enter your login "s3rgh+6@mail.ru" and password "ZAQxsw123"
     And   Click button Enter
 
+
   # Запустить бизнес-процесс по кнопке из верхнего меню
   Scenario: Создать задачу по кнопке из верхнего меню
     Given   Main page is opened
@@ -23,6 +24,7 @@ Feature: Верхнее меню
     And     User choice is available
     And     Click button "Создать задачу"
     Then    Message "Создана новая задача" is shown
+
 
   # Создать задачу по кнопке из верхнего меню
   Scenario: Запустить бизнес-процесс по кнопке из верхнего меню
