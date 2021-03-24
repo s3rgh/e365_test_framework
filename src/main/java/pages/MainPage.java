@@ -1,8 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -111,11 +113,11 @@ public class MainPage extends BasePage {
         buttonmenu.click();
     }
 
-   """ public void submitExitDialog() {
+   /* public void submitExitDialog() {
         assertThat(systemExitDialog.isDisplayed()).isEqualTo(true);
         WebElement buttonOk = systemExitDialog.findElement(By.xpath("//button[text()='ОК']"));
-        buttonOk.click();"""
-    }
+        buttonOk.click();
+    }*/
     public void dialog(String buttonName) {
         WebElement systemDialog = driver.findElement(By.xpath("//div[@role='dialog']"));
         isElementDisplayed(systemDialog);
