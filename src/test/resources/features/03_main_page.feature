@@ -5,7 +5,7 @@ Feature: ELMA 365 ГЛАВНАЯ СТРАНИЦА
     Given Open start page "https://s-elma365.com"
     When  Start page is opened
     And   Hover mouseCursor to button enter
-    And   Enter your login "s3rgh+6@mail.ru" and password "ZAQxsw123"
+    And   Enter your login "kropot1842@mail.ru" and password "KropoT42"
     And   Click button Enter
 
 
