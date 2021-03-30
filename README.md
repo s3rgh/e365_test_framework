@@ -1,6 +1,98 @@
-blueprint for readme
+#Установка окружения
 
-Для запуска выполнить:
+###Ubuntu
+
+1. Установка openjdk 
+   
+* Обновим репозитории   
+  
+`sudo apt-get update`
+  
+* Установим сам JDK
+  
+`sudo apt-get install openjdk-8-jdk`
+
+* Проверим, что всё корректно установлено
+
+`java -version`
+
+`javac -version`
+
+2. Установка Maven
+
+* Установка
+
+`sudo apt-get install maven`
+
+* Проверим, что всё корректно установлено
+
+`mvn -version`
+
+3. Установка git
+
+* Установка
+
+`sudo apt install git`
+
+* Проверим, что всё корректно установлено
+
+`git --version`
+
+4. Для работы может потребоваться Chrome
+
+* Загрузим пакет для установки
+
+`wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb`
+
+* Запустим команду для инсталляции пакета
+
+`sudo dpkg -i google-chrome-stable_current_amd64.deb`
+
+* Если есть какие-то ошибки, можно запустить команду
+
+`sudo apt -f install`
+
+* После установки запустим сам Chrome
+
+`google-chrome`
+
+5. Создадим каталог для нашего проекта 
+
+`mkdir projects`
+
+`cd ./projects`
+
+`pwd`
+
+`git clone https://stash.elewise.com/scm/e3q/e365.git`
+
+> Необходимо будет ввести логин и пароль от аккаунта в stash.elewise.com
+
+5. Установим IDE (Intellij IDEA)
+
+* Установка
+
+`sudo snap install intellij-idea-community --classic`
+
+* Запуск IDE
+
+`intellij-idea-community`
+
+
+6. Установка плагинов для IDE
+
+* Необходимо поставить плагины для Cucumber и Gherkin для работы с фреймворком
+
+
+
+
+###Ссылка на видео по установке окружения: [click](https://drive.google.com/file/d/1XR_kefxLII_YQLS9gk5EEci17j6mVv7Z/view?usp=sharing)
+
+> P.S. если будут какие-то вопросы, то пишите в личку 
+
+
+
+#Запуск тестов:
 
     git clone https://stash.elewise.com/scm/e3q/e365.git
     mvn clean install

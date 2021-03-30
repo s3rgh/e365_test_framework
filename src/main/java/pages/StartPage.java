@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class StartPage extends BasePage {
 
     public StartPage(WebDriver driver) {
         super(driver);
-        wait = new WebDriverWait(this.driver, 5);
+        wait = new WebDriverWait(this.driver, 10);
         PageFactory.initElements(this.driver, this);
     }
 
@@ -50,23 +49,24 @@ public class StartPage extends BasePage {
     @FindBy(xpath = "//span[@class='registration__label--icon']")
     List<WebElement> acceptCheckBoxes;
 
-
     public void isElementDisplayed() {
         isElementDisplayed(wrongPasswordMessage);
     }
 
     public void isSuccessRegMessageDisplayed() {
         WebElement webElement = driver.findElement(By.cssSelector("#trialRegister .success > .modal-body__title"));
-        wait.until(ExpectedConditions.visibilityOf(webElement));
         isElementDisplayed(webElement);
     }
 
     public void goToButtonEnter() {
+        isElementDisplayed(buttonEnter);
         moveToElement(buttonEnter);
         isElementDisplayed(popOver);
     }
 
     public void setEnterLoginAndPassword(String login, String password) {
+        isElementDisplayed(enterLogin);
+        isElementDisplayed(enterPassword);
         enterLogin.sendKeys(login);
         enterPassword.sendKeys(password);
     }
@@ -105,14 +105,13 @@ public class StartPage extends BasePage {
     @Override
     public void setTextInLabel(String text, String label) {
         WebElement labelFio = inputForm.findElement(By.xpath("./*//label[text()='" + label + "']/preceding-sibling::input"));
+        isElementDisplayed(labelFio);
         labelFio.sendKeys(text);
-        // we can use javascript executor instead
-        // JavascriptExecutor executor = (JavascriptExecutor) driver;
-        // executor.executeScript("arguments[0].setAttribute('value','" + text + "')", labelFio);
     }
 
     public void chooseItemInListOnLabel(String text, String label) {
         WebElement dropdown = driver.findElement(By.xpath("//label[text()='" + label + "']/preceding-sibling::select[@id='companySize'] "));
+        isElementDisplayed(dropdown);
         dropdown.click();
         dropdown.findElement(By.cssSelector("#companySize > option[value='" + text + "']")).click();
         assertThat(dropdown.isDisplayed()).isEqualTo(true);
@@ -128,6 +127,7 @@ public class StartPage extends BasePage {
     }
 
     public void clickTryButton() {
+        isElementDisplayed(buttonTry);
         buttonTry.click();
     }
 }

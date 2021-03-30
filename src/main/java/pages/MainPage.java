@@ -12,19 +12,12 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainPage extends BasePage {
 
     protected static Logger logger = LoggerFactory.getLogger(MainPage.class);
-
-    @FindBy(xpath = "//h1[@class='title' and contains(text(),'Добро пожаловать в ELMA365')]")
-    WebElement titleWelcomeTo365;
-
-    @FindBy(xpath = "//div[@class='banner']/descendant::span[text()='system_close']")
-    WebElement closeBanner;
 
     @FindBy(xpath = "/html/body/app-root/div/main/app-main-header/nav/div/app-user-header/a")
     WebElement openUserProfileButton;
@@ -41,30 +34,15 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//*[@class='side-nav__button' and @title='Добавить Раздел']")
     WebElement leftMenuButtonAddUnit;
 
-    @FindBy(xpath = "//*[@class='side-nav__button' and @title='Настройка Разделов и Решений']")
-    WebElement leftMenuSettingsOfUnitsAndDecisions;
-
     @FindBy(css = "div > app-navigation-main-item")
     List<WebElement> leftMenuUnitButtons;
-
-    @FindBy(xpath = "//div[@role='dialog']")
-    WebElement systemDialog;
 
     @FindBy(xpath = "//*[@class='popover-content']")
     WebElement settingsPopOver;
 
     private static String newUnitName;
     private static String newText;
-
     private static Map<WebElement, String> leftMenuUnits;
-
-    public Map<WebElement, String> getLeftMenuUnits() {
-        return leftMenuUnits;
-    }
-
-    public static void setLeftMenuUnits(WebElement webElement, String unitName) {
-        leftMenuUnits.put(webElement, unitName);
-    }
 
     public Map<WebElement, String> fillMap() {
         Map<WebElement, String> map = new HashMap<>();
@@ -76,7 +54,7 @@ public class MainPage extends BasePage {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        wait = new WebDriverWait(this.driver, 5);
+        wait = new WebDriverWait(this.driver, 10);
         PageFactory.initElements(this.driver, this);
         leftMenuUnits = fillMap();
     }
@@ -88,7 +66,6 @@ public class MainPage extends BasePage {
     public void isInitialized() {
 
         try {
-            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             WebElement popup = driver.findElement(By.cssSelector("p-dialog > div > div"));
             if (popup.isDisplayed()) {
                 popup.findElement(By.xpath("//div[@role='dialog']/descendant::*[contains(text(), 'Нет')]")).click();
@@ -138,8 +115,6 @@ public class MainPage extends BasePage {
                 findElement(By.xpath("//span[text()='" + fieldName + "']/parent::elma-form-label[@class='elma-form-label ng-star-inserted']/following-sibling::elma-form-control/descendant::input"));
         input.click();
         input.sendKeys(newUnitName);
-
-
     }
 
     public void isUnitCreated() {
@@ -155,12 +130,12 @@ public class MainPage extends BasePage {
     }
 
     public void clickLeftMenuButtonAddUnit() {
-        wait.until(ExpectedConditions.visibilityOf(leftMenuButtonAddUnit));
+        isElementDisplayed(leftMenuButtonAddUnit);
         leftMenuButtonAddUnit.click();
     }
 
     public void clickStaticSettingsButton() {
-        wait.until(ExpectedConditions.visibilityOf(staticButtonSettings));
+        isElementDisplayed(staticButtonSettings);
         staticButtonSettings.click();
     }
 
@@ -170,7 +145,7 @@ public class MainPage extends BasePage {
 
     public void clickPopOverButtonByName(String buttonName) {
         WebElement button = settingsPopOver.findElement(By.xpath("//*[@class='popover-content']/descendant::*[text()='" + buttonName + "']"));
-        wait.until(ExpectedConditions.visibilityOf(button));
+        isElementDisplayed(button);
         button.click();
     }
 
@@ -186,23 +161,13 @@ public class MainPage extends BasePage {
 
     public void clickUnit(String unitName) {
         WebElement unit = driver.findElement(By.xpath("//a[@title='" + unitName + "']"));
-        wait.until(ExpectedConditions.visibilityOf(unit));
-        /*Actions actions = new Actions(driver);
-        actions
-                .moveToElement(unit)
-                .click()
-                .perform();*/
+        isElementDisplayed(unit);
         unit.click();
     }
 
     public void clickApp(String appName) {
         WebElement app = driver.findElement(By.xpath("//a/child::span[contains(text(), '" + appName + "')]"));
-        wait.until(ExpectedConditions.visibilityOf(app));
-        /*Actions actions = new Actions(driver);
-        actions
-                .moveToElement(app)
-                .click()
-                .perform();*/
+        isElementDisplayed(app);
         app.click();
     }
 
@@ -216,12 +181,8 @@ public class MainPage extends BasePage {
 
     public void clickButton(String buttonName) {
         WebElement button = driver.findElement(By.xpath("//button[contains(text(),'" + buttonName + "')]"));
-        wait.until(ExpectedConditions.visibilityOf(button));
-        Actions actions = new Actions(driver);
-        actions
-                .moveToElement(button)
-                .click()
-                .perform();
+        isElementDisplayed(button);
+        button.click();
     }
 
     public void isModalFormOpened(String nameForm) {
@@ -230,15 +191,12 @@ public class MainPage extends BasePage {
 
     public void fillModalFormFieldWithText(String field, String text) {
         newText = text.replace("@", System.currentTimeMillis() + "@");
-        WebElement input = driver.
-                //findElement(By.xpath("//*[contains(text(),'" + field + "')]/parent::elma-form-label[@class='elma-form-label ng-star-inserted']/following-sibling::elma-form-control/descendant::input"));
-                        findElement(By.xpath("//*[contains(text(),'" + field + "')]/ancestor::elma-form-label/following-sibling::elma-form-control/descendant::input"));
-
+        WebElement input = driver.findElement(By.xpath("//*[contains(text(),'" + field + "')]/ancestor::elma-form-label/following-sibling::elma-form-control/descendant::input"));
+        wait.until(ExpectedConditions.visibilityOf(input));
         Actions actions = new Actions(driver);
         actions.moveToElement(input)
                 .click()
                 .perform();
-
         actions.sendKeys(newText)
                 .perform();
     }
@@ -248,15 +206,13 @@ public class MainPage extends BasePage {
     }
 
     public void isUserChoiceAvailable() {
-        isElementDisplayed(driver.findElement(By.xpath("//app-user")));
-        Actions actions = new Actions(driver);
-        actions
-                .moveToElement(driver.findElement(By.xpath("//app-user")))
-                .click()
-                .perform();
+        WebElement webElement = driver.findElement(By.xpath("//app-user"));
+        isElementDisplayed(webElement);
+        webElement.click();
     }
 
     public void isMessageDisplayed(String message) {
-        isElementDisplayed(driver.findElement(By.xpath("//div[contains(text(), '" + message + "')]")));
+        WebElement webElement = driver.findElement(By.xpath("//div[contains(text(), '" + message + "')]"));
+        isElementDisplayed(webElement);
     }
 }
