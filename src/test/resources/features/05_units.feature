@@ -8,6 +8,7 @@ Feature: Разделы
     And   Enter your login "kropot1842@mail.ru" and password "KropoT42"
     And   Click button Enter
 
+
   # Создать раздел
   Scenario: Создать раздел
     Given   Main page is opened

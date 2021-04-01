@@ -8,17 +8,20 @@ Feature: Кнопки левого меню
     And   Enter your login "kropot1842@mail.ru" and password "KropoT42"
     And   Click button Enter
 
+
 #Переход в раздел Календарь по кнопке из левого меню
   Scenario: Переход в Календарь по кнопке из левого меню
     Given   Main page is opened
     And     Open unit "Календарь"
     Then    Unit "Календарь" is opened
 
+
 #Переход в раздел Задачи по кнопке из левого меню
   Scenario: Переход в Задачи по кнопке из левого меню
     Given   Main page is opened
     And     Open unit "Задачи"
     Then    Unit "Задачи" is opened
+
 
 #Переход в раздел Сообщения по кнопке из левого меню
   Scenario: Переход в Сообщения по кнопке из левого меню

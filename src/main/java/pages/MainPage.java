@@ -1,9 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -92,23 +90,6 @@ public class MainPage extends BasePage {
         buttonExit.click();
     }
 
-    public void clickButtonExitOnUserProfilePopOver(String button) {
-        WebElement buttonExit = driver.findElement(By.xpath("//span[text()='" + button +"']"));
-        wait.until(ExpectedConditions.visibilityOf(buttonExit));
-        buttonExit.click();
-    }
-
-    public void clickButtonOnMenuPopOver(String button) {
-        WebElement buttonmenu = driver.findElement(By.xpath("//span[contains(text(),'" + button +"')]"));
-        wait.until(ExpectedConditions.visibilityOf(buttonmenu));
-        buttonmenu.click();
-    }
-
-   /* public void submitExitDialog() {
-        assertThat(systemExitDialog.isDisplayed()).isEqualTo(true);
-        WebElement buttonOk = systemExitDialog.findElement(By.xpath("//button[text()='ОК']"));
-        buttonOk.click();
-    }*/
     public void dialog(String buttonName) {
         WebElement systemDialog = driver.findElement(By.xpath("//div[@role='dialog']"));
         isElementDisplayed(systemDialog);
@@ -121,7 +102,6 @@ public class MainPage extends BasePage {
     }
 
     public void isProfilePopOverDisplayed() {
-        wait.until(ExpectedConditions.visibilityOf(userProfilePopOver));
         isElementDisplayed(userProfilePopOver);
     }
 

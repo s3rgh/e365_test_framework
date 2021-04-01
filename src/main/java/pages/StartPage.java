@@ -101,10 +101,6 @@ public class StartPage extends BasePage {
         driver.get(url);
     }
 
-  /*  public void clickButton() {
-        buttonTry.click();
-    }*/
-
     public void clickSubmitButton(String buttonName) {
         for (WebElement b : buttons) {
             if (b.findElement(By.xpath("//span[text()='" + buttonName + "']")).isEnabled() && b.findElement(By.xpath("//span[text()='" + buttonName + "']")).isDisplayed()) {
