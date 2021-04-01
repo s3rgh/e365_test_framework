@@ -1,4 +1,4 @@
-Feature: ПОЛУЧЕНИЕ ПРОБНОГО СТЕНДА
+Feature: Получение пробного стенда
   Scenario: Активация бесплатной версии
     Given   Open start page "https://s-elma365.com"
     When    Start page is opened

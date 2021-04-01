@@ -21,12 +21,10 @@ public class BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    //Wait Wrapper Method  by element located By
     public void waitVisibility(By elementBy) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
     }
 
-    //Is Element located By  Displayed
     public void isElementDisplayed(By elementBy) {
         waitVisibility(elementBy);
         assertThat(driver.findElement(elementBy).isDisplayed()).isEqualTo(true);
@@ -39,8 +37,6 @@ public class BasePage {
 
     public void setTextInLabel(String textLabel, String text) {
         WebElement el = driver.findElement(By.xpath("//label[text()='" + textLabel + "']/preceding-sibling::input"));
-        System.out.println(el.getTagName());
-        System.out.println(el.isSelected());
         el.sendKeys(text);
     }
 

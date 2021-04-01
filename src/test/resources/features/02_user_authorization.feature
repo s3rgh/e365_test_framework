@@ -50,4 +50,4 @@ Feature: Авторизация пользователя
     And   Click user profile button "Выйти"
     When  Dialog is opened
     And   Click dialog button "ОК"
-    Then  Button "Войти в систему" is displayed
+    Then  Login title text is displayed
