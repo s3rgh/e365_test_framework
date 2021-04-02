@@ -43,6 +43,9 @@ public class StartPage extends BasePage {
     @FindBy(xpath = "//div[contains(text(), 'E-mail или пароль указан не верно.')]")
     WebElement wrongPasswordMessage;
 
+    @FindBy(css = "input[name='emailOrLogin']")
+    WebElement enterEmailOrLogin;
+
     @FindBy(tagName = "button")
     List<WebElement> buttons;
 
@@ -51,6 +54,11 @@ public class StartPage extends BasePage {
 
     public void isElementDisplayed() {
         isElementDisplayed(wrongPasswordMessage);
+    }
+
+    public void goToEmailEnter() {
+        moveToElement(enterEmailOrLogin);
+        isElementDisplayed(popOver);
     }
 
     public void isSuccessRegMessageDisplayed() {
