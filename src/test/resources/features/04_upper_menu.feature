@@ -3,15 +3,16 @@ Feature: Верхнее меню
   #Precondition: Авторизоваться в системе под пользователем с правами администратора
   Background:
     Given Open start page "https://s-elma365.com"
-    When  Start page is opened
+    #When  Start page is opened
     And   Hover mouseCursor to button enter
     And   Enter your login "kropot1842@mail.ru" and password "KropoT42"
     And   Click button Enter
+    Given   Main page is opened
 
 
   # Запустить бизнес-процесс по кнопке из верхнего меню
   Scenario: Запустить бизнес-процесс по кнопке из верхнего меню
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click button "Создать"
     #And     Settings popover is opened
     And     Click popover button "Запустить бизнес-процесс"
@@ -28,7 +29,7 @@ Feature: Верхнее меню
 
   # Создать задачу по кнопке из верхнего меню
   Scenario: Создать задачу по кнопке из верхнего меню
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click button "Создать"
     #And     Settings popover is opened
     And     Click popover button "Задача"
@@ -42,7 +43,7 @@ Feature: Верхнее меню
 
   # Запустить конкретный бизнес-процесс по кнопке из верхнего меню
   Scenario: Запустить конкретный бизнес-процесс по кнопке из верхнего меню
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click button "Создать"
     #And     Settings popover is opened
     And     Click popover button "test_process"
@@ -54,7 +55,7 @@ Feature: Верхнее меню
 
   # Создать элемент приложения по кнопке из верхнего меню
   Scenario: Создать элемент приложения по кнопке из верхнего меню
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click button "Создать"
     #And     Settings popover is opened
     And     Click popover button "Test"

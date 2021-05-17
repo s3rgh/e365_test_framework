@@ -1,7 +1,7 @@
 Feature: Получение пробного стенда
   Scenario: Активация бесплатной версии
     Given   Open start page "https://s-elma365.com"
-    When    Start page is opened
+    #When    Start page is opened
     And     Click try button
     And     Enter your data "Иван Иванов" to field "Фамилия и имя"
     And     Enter your data "email@mail.ru" to field "Электронная почта"

@@ -3,15 +3,16 @@ Feature: ELMA 365 Главная страница
   #Precondition: Авторизоваться в системе под пользователем с правами администратора
   Background:
     Given Open start page "https://s-elma365.com"
-    When  Start page is opened
+    #When  Start page is opened
     And   Hover mouseCursor to button enter
     And   Enter your login "kropot1842@mail.ru" and password "KropoT42"
     And   Click button Enter
+    Given   Main page is opened
 
 
     # Используя кнопку на основной странице
   Scenario: Добавить раздел с главной страницы
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click button Create Unit
     And     Click dialog button "Создать"
     And     Click dialog button "Раздел"
@@ -22,7 +23,7 @@ Feature: ELMA 365 Главная страница
 
     # Используя кнопку в левом меню
   Scenario: Добавить раздел по кнопке в левом меню
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click left menu button Create Unit
     And     Click dialog button "Создать"
     And     Click dialog button "Раздел"
@@ -32,13 +33,13 @@ Feature: ELMA 365 Главная страница
 
 
   Scenario: Перейти в приложения с главной страницы
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Open unit "Компания"
     Then    Unit "Компания" is opened
 
 
   Scenario: Настроить страницу в две колонки
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click button settings
     And     Settings popover is opened
     And     Click popover button "Настройки страницы"
@@ -49,7 +50,7 @@ Feature: ELMA 365 Главная страница
 
 
   Scenario: Настроить страницу в одну колонку
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Click button settings
     And     Settings popover is opened
     And     Click popover button "Настройки страницы"
@@ -61,7 +62,7 @@ Feature: ELMA 365 Главная страница
 
   # Добавить пользователя с главной страницы
   Scenario: Добавить пользователя с главной страницы
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Open unit "Администрирование"
     And     Unit "Администрирование" is opened
     And     Open "Пользователи" application
@@ -75,7 +76,7 @@ Feature: ELMA 365 Главная страница
 
   # Перейти в чат технической поддержки с главной страницы
   Scenario: Перейти в чат технической поддержки с главной страницы
-    Given   Main page is opened
+    #Given   Main page is opened
     And     Open unit "Сообщения"
     #And     Unit "Сообщения" is opened
     And     Open "Техническая поддержка" application

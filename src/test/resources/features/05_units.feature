@@ -7,6 +7,7 @@ Feature: Разделы
     And   Hover mouseCursor to button enter
     And   Enter your login "kropot1842@mail.ru" and password "KropoT42"
     And   Click button Enter
+    Given   Main page is opened
 
 
   # Создать раздел

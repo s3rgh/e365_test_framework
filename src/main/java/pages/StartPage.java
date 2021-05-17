@@ -63,8 +63,8 @@ public class StartPage extends BasePage {
     }
 
     public void isSuccessRegMessageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#trialRegister .success > .modal-body__title")));
-        isElementDisplayed(By.cssSelector("#trialRegister .success > .modal-body__title"));
+        WebElement element = driver.findElement(By.cssSelector("#trialRegister .success > .modal-body__title"));
+        isElementDisplayed(element);
     }
 
     public void goToButtonEnter() {
