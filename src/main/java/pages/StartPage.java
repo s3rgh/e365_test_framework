@@ -63,7 +63,7 @@ public class StartPage extends BasePage {
     }
 
     public void isSuccessRegMessageDisplayed() {
-        WebElement element = driver.findElement(By.cssSelector("#trialRegister .success > .modal-body__title"));
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"trialRegister\"]"));
         isElementDisplayed(element);
     }
 

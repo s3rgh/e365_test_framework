@@ -72,7 +72,7 @@ public class MainPage extends BasePage {
         } catch (NoSuchElementException e) {
             logger.info("!!!Timezone Popup doesn't shown!!!");
         }
-        isElementDisplayed(By.xpath("//*[@class='title']"));
+        isElementDisplayed(By.cssSelector("h1.title"));
     }
 
     public void goToButtonUserProfile() {
