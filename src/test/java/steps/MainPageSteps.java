@@ -137,13 +137,18 @@ public class MainPageSteps extends TestBase {
         mainPage.IsUserCreated();
     }
 
-    @And("User choice is available")
-    public void isUserChoiceAvailable() {
-        mainPage.isUserChoiceAvailable();
+    @And("User choice is available {string}")
+    public void isUserChoiceAvailable(String name) {
+        mainPage.isUserChoiceAvailable(name);
     }
 
     @Then("Message {string} is shown")
     public void isMessageDisplayed(String message) {
         mainPage.isMessageDisplayed(message);
+    }
+
+    @And("Click User choice {string}")
+    public void clickUserChoice(String arg0) {
+        mainPage.clickUserChoice(arg0);
     }
 }

@@ -36,7 +36,7 @@ public class TestBase {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 
         Runtime.getRuntime().addShutdownHook(
                 new Thread(() -> webDriver.quit())

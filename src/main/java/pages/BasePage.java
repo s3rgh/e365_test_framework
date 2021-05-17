@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class BasePage {
 
@@ -21,12 +21,8 @@ public class BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public void waitVisibility(By elementBy) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
-    }
-
     public void isElementDisplayed(By elementBy) {
-        waitVisibility(elementBy);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
         assertThat(driver.findElement(elementBy).isDisplayed()).isEqualTo(true);
     }
 
@@ -38,14 +34,6 @@ public class BasePage {
     public void setTextInLabel(String textLabel, String text) {
         WebElement el = driver.findElement(By.xpath("//label[text()='" + textLabel + "']/preceding-sibling::input"));
         el.sendKeys(text);
-    }
-
-    public void isElementNotDisplayed(By elementBy) {
-        assertThat(driver.findElements(elementBy).isEmpty()).isEqualTo(true);
-    }
-
-    public void isAlertText(String message) {
-        assertThat(driver.switchTo().alert().getText()).isEqualTo(message);
     }
 
     public void moveToElement(WebElement webElement) {

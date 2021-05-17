@@ -5,6 +5,10 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.StartPage;
 
 public class StartPageSteps extends TestBase {
@@ -95,5 +99,14 @@ public class StartPageSteps extends TestBase {
     @Then("Success reg message is displayed")
     public void isSuccessRegMessageDisplayed() {
         startPage.isSuccessRegMessageDisplayed();
+    }
+
+    @And("Click captcha")
+    public void clickCaptcha() {
+        WebElement iframe = (new WebDriverWait(webDriver, 10))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='trialRegister']/descendant::div[@class='g-recaptcha-wrap__item']/descendant::iframe")));
+        webDriver.switchTo().frame(iframe);
+        webDriver.findElement(By.xpath("//*[@id='recaptcha-anchor']")).click();
+        webDriver.switchTo().defaultContent();
     }
 }

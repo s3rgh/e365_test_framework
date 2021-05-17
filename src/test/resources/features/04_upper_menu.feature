@@ -10,7 +10,7 @@ Feature: Верхнее меню
 
 
   # Запустить бизнес-процесс по кнопке из верхнего меню
-  Scenario: Создать задачу по кнопке из верхнего меню
+  Scenario: Запустить бизнес-процесс по кнопке из верхнего меню
     Given   Main page is opened
     And     Click button "Создать"
     And     Settings popover is opened
@@ -21,13 +21,14 @@ Feature: Верхнее меню
     And     Modal form "Задача" is opened
     And     Fill modal form field "Тема" with text "topic@"
     And     Fill modal form field "Исполнитель" with text "Test1"
-    And     User choice is available
+    #And     User choice is available "Test1"
+    And     Click User choice "Test1"
     And     Click button "Создать задачу"
     Then    Message "Создана новая задача" is shown
 
 
   # Создать задачу по кнопке из верхнего меню
-  Scenario: Запустить бизнес-процесс по кнопке из верхнего меню
+  Scenario: Создать задачу по кнопке из верхнего меню
     Given   Main page is opened
     And     Click button "Создать"
     And     Settings popover is opened
@@ -35,7 +36,8 @@ Feature: Верхнее меню
     And     Modal form "Задача" is opened
     And     Fill modal form field "Тема" with text "topic@"
     And     Fill modal form field "Исполнитель" with text "Test1"
-    And     User choice is available
+    #And     User choice is available
+    And     Click User choice "Test1"
     And     Click button "Создать задачу"
     Then    Message "Создана новая задача" is shown
 

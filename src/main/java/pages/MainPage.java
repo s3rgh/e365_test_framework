@@ -65,7 +65,6 @@ public class MainPage extends BasePage {
     }
 
     public void isInitialized() {
-
         try {
             WebElement popup = driver.findElement(By.cssSelector("p-dialog > div > div"));
             if (popup.isDisplayed()) {
@@ -74,9 +73,9 @@ public class MainPage extends BasePage {
         } catch (NoSuchElementException e) {
             logger.info("!!!Timezone Popup doesn't shown!!!");
         }
-
-        JavascriptExecutor input = (JavascriptExecutor) driver;
-        assertThat(input.executeScript("return document.readyState").equals("complete")).isEqualTo(true);
+        /*JavascriptExecutor input = (JavascriptExecutor) driver;
+        assertThat(input.executeScript("return document.readyState").equals("complete")).isEqualTo(true);*/
+        isElementDisplayed(By.xpath("//*[@class='title']"));
     }
 
     public void goToButtonUserProfile() {
@@ -121,7 +120,6 @@ public class MainPage extends BasePage {
     public void isUnitCreated() {
         WebElement newUnit = driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']"));
         isElementDisplayed(newUnit);
-
         for (int i = 0; i < leftMenuUnitButtons.size(); i++) {
             if (!leftMenuUnitButtons.get(i).findElement(By.xpath("//span")).getText().equals(newUnitName)) {
                 leftMenuUnitButtons.add(newUnit);
@@ -182,8 +180,12 @@ public class MainPage extends BasePage {
 
     public void clickButton(String buttonName) {
         WebElement button = driver.findElement(By.xpath("//button[contains(text(),'" + buttonName + "')]"));
-        isElementDisplayed(button);
-        button.click();
+        wait.until(ExpectedConditions.elementToBeClickable(button));
+        Actions actions = new Actions(driver);
+        actions
+                .moveToElement(button)
+                .click()
+                .perform();
     }
 
     public void isModalFormOpened(String nameForm) {
@@ -194,20 +196,17 @@ public class MainPage extends BasePage {
         newText = text.replace("@", System.currentTimeMillis() + "@");
         WebElement input = driver.findElement(By.xpath("//*[contains(text(),'" + field + "')]/ancestor::elma-form-label/following-sibling::elma-form-control/descendant::input"));
         wait.until(ExpectedConditions.visibilityOf(input));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(input)
-                .click()
-                .perform();
-        actions.sendKeys(newText)
-                .perform();
+        input.click();
+        input.sendKeys(newText);
     }
 
     public void IsUserCreated() {
-        isElementDisplayed(driver.findElement(By.xpath("//div[@class='app-content router-wrapper']/descendant::*[contains(text(),'" + newText + "')]")));
+        //isElementDisplayed(driver.findElement(By.xpath("//div[@class='app-content router-wrapper']/descendant::*[contains(text(),'" + newText + "')]")));
+        isElementDisplayed(driver.findElement(By.xpath("//div[contains(text(), 'Приглашение успешно создано')]")));
     }
 
-    public void isUserChoiceAvailable() {
-        WebElement webElement = driver.findElement(By.xpath("//app-user"));
+    public void isUserChoiceAvailable(String name) {
+        WebElement webElement = driver.findElement(By.xpath("//*[contains(text(), '" + name + "')]/ancestor::app-user"));
         isElementDisplayed(webElement);
         webElement.click();
     }
@@ -215,5 +214,11 @@ public class MainPage extends BasePage {
     public void isMessageDisplayed(String message) {
         WebElement webElement = driver.findElement(By.xpath("//div[contains(text(), '" + message + "')]"));
         isElementDisplayed(webElement);
+    }
+
+    public void clickUserChoice(String arg0) {
+        WebElement webElement = driver.findElement(By.xpath("//*[contains(text(), '" + arg0 + "')]/ancestor::app-user"));
+        isElementDisplayed(webElement);
+        webElement.click();
     }
 }

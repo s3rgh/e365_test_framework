@@ -11,4 +11,5 @@ Feature: Получение пробного стенда
     And     Choose item "< 20" in list on label "Численность компании"
     And     Accept the terms of the user agreement
     And     Click submit button "Попробовать (14 дней бесплатно)"
+    #And     Click captcha
     Then    Success reg message is displayed

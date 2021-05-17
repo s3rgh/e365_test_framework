@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class StartPage extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    @FindBy(xpath = "/html/head/title")
+    @FindBy(xpath = "//*[@class='h1-title hero__title']")
     WebElement pageTitle;
 
     @FindBy(xpath = "//a[text()='Попробовать' and @class = 'btn']")
@@ -62,34 +63,33 @@ public class StartPage extends BasePage {
     }
 
     public void isSuccessRegMessageDisplayed() {
-        WebElement webElement = driver.findElement(By.cssSelector("#trialRegister .success > .modal-body__title"));
-        isElementDisplayed(webElement);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#trialRegister .success > .modal-body__title")));
     }
 
     public void goToButtonEnter() {
-        isElementDisplayed(buttonEnter);
+        //isElementDisplayed(buttonEnter);
         moveToElement(buttonEnter);
         isElementDisplayed(popOver);
     }
 
     public void setEnterLoginAndPassword(String login, String password) {
-        isElementDisplayed(enterLogin);
-        isElementDisplayed(enterPassword);
+        //isElementDisplayed(enterLogin);
+        //isElementDisplayed(enterPassword);
         enterLogin.sendKeys(login);
         enterPassword.sendKeys(password);
     }
 
     public void pushEnterButton() {
         WebElement enterButtonOnPopOver = popOver.findElement(By.xpath("//button[@class='btn js-submit ladda-button']/child::span[text()='Войти']"));
-        isElementDisplayed(enterButtonOnPopOver);
+        //isElementDisplayed(enterButtonOnPopOver);
         enterButtonOnPopOver.click();
     }
 
     public void selectRememberMeCheckBox() {
         moveToElement(buttonEnter);
-        isElementDisplayed(popOver);
+        //isElementDisplayed(popOver);
         WebElement checkBox = popOver.findElement(By.xpath("//*[@class='agree-check registration__input--checkbox visually-hidden']/following-sibling::span[text()='Запомнить меня']"));
-        isElementDisplayed(checkBox);
+        //isElementDisplayed(checkBox);
         checkBox.click();
     }
 
