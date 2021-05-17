@@ -144,7 +144,7 @@ public class MainPage extends BasePage {
     public void clickPopOverButtonByName(String buttonName) {
         WebElement button = settingsPopOver.findElement(By.xpath("//*[@class='popover-content']/descendant::*[text()='" + buttonName + "']"));
         isElementDisplayed(button);
-        button.click();
+        settingsPopOver.findElement(By.xpath("//*[@class='popover-content']/descendant::*[text()='" + buttonName + "']")).click();
     }
 
     public void isTwoColumnDisplayed() {
@@ -182,7 +182,7 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(button));
         Actions actions = new Actions(driver);
         actions
-                .moveToElement(button)
+                .moveToElement(driver.findElement(By.xpath("//button[contains(text(),'" + buttonName + "')]")))
                 .click()
                 .perform();
     }

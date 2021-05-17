@@ -10,15 +10,15 @@ Feature: Разделы
 
 
   # Создать раздел
-  Scenario: Создать раздел
-    Given   Main page is opened
+  #Scenario: Создать раздел
+  #  Given   Main page is opened
 
 
   # Скачать раздел (Выбрать готовый Раздел из каталога)
-  Scenario: Скачать раздел (Выбрать готовый Раздел из каталога)
-    Given   Main page is opened
+  #Scenario: Скачать раздел (Выбрать готовый Раздел из каталога)
+  #  Given   Main page is opened
 
 
   # Скачать раздел (Загрузить файл)
-  Scenario: Скачать раздел (Загрузить файл)
-    Given   Main page is opened
+  #Scenario: Скачать раздел (Загрузить файл)
+  #  Given   Main page is opened

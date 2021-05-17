@@ -42,7 +42,7 @@ Feature: ELMA 365 Главная страница
     And     Click button settings
     And     Settings popover is opened
     And     Click popover button "Настройки страницы"
-    And     Dialog is opened
+    #And     Dialog is opened
     And     Click dialog button "Две колонки"
     And     Click dialog button "Сохранить"
     Then    Two column is displayed
@@ -53,7 +53,7 @@ Feature: ELMA 365 Главная страница
     And     Click button settings
     And     Settings popover is opened
     And     Click popover button "Настройки страницы"
-    And     Dialog is opened
+    #And     Dialog is opened
     And     Click dialog button "Одна колонка"
     And     Click dialog button "Сохранить"
     Then    One column is displayed
@@ -65,9 +65,9 @@ Feature: ELMA 365 Главная страница
     And     Open unit "Администрирование"
     And     Unit "Администрирование" is opened
     And     Open "Пользователи" application
-    And     App "Пользователи" is opened
+    #And     App "Пользователи" is opened
     And     Click button "+ Пользователь"
-    And     Modal form "Приглашение пользователя" is opened
+    #And     Modal form "Приглашение пользователя" is opened
     And     Fill modal form field "Эл. почта" with text "vasya@mailinator.com"
     And     Click button "Выслать приглашение"
     Then    User is created
@@ -77,6 +77,6 @@ Feature: ELMA 365 Главная страница
   Scenario: Перейти в чат технической поддержки с главной страницы
     Given   Main page is opened
     And     Open unit "Сообщения"
-    And     Unit "Сообщения" is opened
+    #And     Unit "Сообщения" is opened
     And     Open "Техническая поддержка" application
     And     App "Техническая поддержка" is opened
