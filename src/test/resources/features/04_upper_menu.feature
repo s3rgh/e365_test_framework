@@ -13,12 +13,12 @@ Feature: Верхнее меню
   Scenario: Запустить бизнес-процесс по кнопке из верхнего меню
     Given   Main page is opened
     And     Click button "Создать"
-    And     Settings popover is opened
+    #And     Settings popover is opened
     And     Click popover button "Запустить бизнес-процесс"
-    And     Dialog is opened
+    #And     Dialog is opened
     And     Click dialog button "Системные процессы"
     And     Click dialog button "Задача"
-    And     Modal form "Задача" is opened
+    #And     Modal form "Задача" is opened
     And     Fill modal form field "Тема" with text "topic@"
     And     Fill modal form field "Исполнитель" with text "Test1"
     And     Click User choice "Test1"
@@ -30,7 +30,7 @@ Feature: Верхнее меню
   Scenario: Создать задачу по кнопке из верхнего меню
     Given   Main page is opened
     And     Click button "Создать"
-    And     Settings popover is opened
+    #And     Settings popover is opened
     And     Click popover button "Задача"
     And     Modal form "Задача" is opened
     And     Fill modal form field "Тема" with text "topic@"
@@ -44,9 +44,9 @@ Feature: Верхнее меню
   Scenario: Запустить конкретный бизнес-процесс по кнопке из верхнего меню
     Given   Main page is opened
     And     Click button "Создать"
-    And     Settings popover is opened
+    #And     Settings popover is opened
     And     Click popover button "test_process"
-    And     Dialog is opened
+    #And     Dialog is opened
     And     Fill dialog field "Название" with text "Process"
     And     Click button "Задача"
     Then    Message "Запущен процесс" is shown
@@ -56,10 +56,10 @@ Feature: Верхнее меню
   Scenario: Создать элемент приложения по кнопке из верхнего меню
     Given   Main page is opened
     And     Click button "Создать"
-    And     Settings popover is opened
+    #And     Settings popover is opened
     And     Click popover button "Test"
     And     Click popover button "test_app"
-    And     Modal form "test_app" is opened
+    #And     Modal form "test_app" is opened
     And     Fill modal form field "Название" with text "name@"
     And     Click button "Сохранить"
     Then    Message "успешно создан" is shown
