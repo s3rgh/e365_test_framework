@@ -1,7 +1,10 @@
 package pages;
 
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,8 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainPage extends BasePage {
 
@@ -73,8 +74,6 @@ public class MainPage extends BasePage {
         } catch (NoSuchElementException e) {
             logger.info("!!!Timezone Popup doesn't shown!!!");
         }
-        /*JavascriptExecutor input = (JavascriptExecutor) driver;
-        assertThat(input.executeScript("return document.readyState").equals("complete")).isEqualTo(true);*/
         isElementDisplayed(By.xpath("//*[@class='title']"));
     }
 
@@ -86,7 +85,7 @@ public class MainPage extends BasePage {
     public void clickButtonOnUserProfilePopOver(String button) {
         WebElement buttonExit = driver.findElement(By.xpath("//span[text()='" + button + "']"));
         wait.until(ExpectedConditions.visibilityOf(buttonExit));
-        buttonExit.click();
+        driver.findElement(By.xpath("//span[text()='" + button + "']")).click();
     }
 
     public void dialog(String buttonName) {
@@ -201,19 +200,16 @@ public class MainPage extends BasePage {
     }
 
     public void IsUserCreated() {
-        //isElementDisplayed(driver.findElement(By.xpath("//div[@class='app-content router-wrapper']/descendant::*[contains(text(),'" + newText + "')]")));
         isElementDisplayed(driver.findElement(By.xpath("//div[contains(text(), 'Приглашение успешно создано')]")));
     }
 
     public void isUserChoiceAvailable(String name) {
-        WebElement webElement = driver.findElement(By.xpath("//*[contains(text(), '" + name + "')]/ancestor::app-user"));
-        isElementDisplayed(webElement);
-        webElement.click();
+        isElementDisplayed(driver.findElement(By.xpath("//*[contains(text(), '" + name + "')]/ancestor::app-user")));
+        driver.findElement(By.xpath("//*[contains(text(), '" + name + "')]/ancestor::app-user")).click();
     }
 
     public void isMessageDisplayed(String message) {
-        WebElement webElement = driver.findElement(By.xpath("//div[contains(text(), '" + message + "')]"));
-        isElementDisplayed(webElement);
+        isElementDisplayed(driver.findElement(By.xpath("//div[contains(text(), '" + message + "')]")));
     }
 
     public void clickUserChoice(String arg0) {

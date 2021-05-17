@@ -65,8 +65,3 @@ Feature: Верхнее меню
     And     Fill modal form field "Название" with text "name@"
     And     Click button "Сохранить"
     Then    Message "успешно создан" is shown
-
-
-  # Проверить отображение приложений по разделам в верхнем меню
-  Scenario: Проверить отображение приложений по разделам в верхнем меню
-    Given   Main page is opened

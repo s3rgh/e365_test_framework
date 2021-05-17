@@ -64,32 +64,27 @@ public class StartPage extends BasePage {
 
     public void isSuccessRegMessageDisplayed() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#trialRegister .success > .modal-body__title")));
+        isElementDisplayed(By.cssSelector("#trialRegister .success > .modal-body__title"));
     }
 
     public void goToButtonEnter() {
-        //isElementDisplayed(buttonEnter);
         moveToElement(buttonEnter);
         isElementDisplayed(popOver);
     }
 
     public void setEnterLoginAndPassword(String login, String password) {
-        //isElementDisplayed(enterLogin);
-        //isElementDisplayed(enterPassword);
         enterLogin.sendKeys(login);
         enterPassword.sendKeys(password);
     }
 
     public void pushEnterButton() {
         WebElement enterButtonOnPopOver = popOver.findElement(By.xpath("//button[@class='btn js-submit ladda-button']/child::span[text()='Войти']"));
-        //isElementDisplayed(enterButtonOnPopOver);
         enterButtonOnPopOver.click();
     }
 
     public void selectRememberMeCheckBox() {
         moveToElement(buttonEnter);
-        //isElementDisplayed(popOver);
         WebElement checkBox = popOver.findElement(By.xpath("//*[@class='agree-check registration__input--checkbox visually-hidden']/following-sibling::span[text()='Запомнить меня']"));
-        //isElementDisplayed(checkBox);
         checkBox.click();
     }
 
