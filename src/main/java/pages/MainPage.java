@@ -36,29 +36,27 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//*[@class='side-nav__button' and @title='Добавить Раздел']")
     WebElement leftMenuButtonAddUnit;
 
-    @FindBy(css = "div > app-navigation-main-item")
-    List<WebElement> leftMenuUnitButtons;
-
     @FindBy(xpath = "//*[@class='popover-content']")
     WebElement settingsPopOver;
 
     private static String newUnitName;
-    private static String newText;
     private static Map<WebElement, String> leftMenuUnits;
+    //private static List<WebElement> leftMenuUnitButtons;
 
-    public Map<WebElement, String> fillMap() {
+/*    public Map<WebElement, String> fillMap() {
+        leftMenuUnitButtons = driver.findElements(By.cssSelector("div > app-navigation-main-item"));
         Map<WebElement, String> map = new HashMap<>();
         for (WebElement w : leftMenuUnitButtons) {
             map.put(w, w.findElement(By.xpath("//span")).getText());
         }
         return map;
-    }
+    }*/
 
     public MainPage(WebDriver driver) {
         super(driver);
         wait = new WebDriverWait(this.driver, 10);
         PageFactory.initElements(this.driver, this);
-        leftMenuUnits = fillMap();
+        //leftMenuUnits = fillMap();
     }
 
     public void isElementDisplayed() {
@@ -117,14 +115,15 @@ public class MainPage extends BasePage {
     }
 
     public void isUnitCreated() {
-        WebElement newUnit = driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']"));
-        isElementDisplayed(newUnit);
-        for (int i = 0; i < leftMenuUnitButtons.size(); i++) {
+        //leftMenuUnits = fillMap();
+        //WebElement newUnit = driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']"));
+        isElementDisplayed(driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']")));
+/*        for (int i = 0; i < leftMenuUnitButtons.size(); i++) {
             if (!leftMenuUnitButtons.get(i).findElement(By.xpath("//span")).getText().equals(newUnitName)) {
-                leftMenuUnitButtons.add(newUnit);
-                leftMenuUnits.put(newUnit, newUnitName);
+                leftMenuUnitButtons.add(driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']")));
+                leftMenuUnits.put(driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']")), newUnitName);
             }
-        }
+        }*/
     }
 
     public void clickLeftMenuButtonAddUnit() {
@@ -192,7 +191,7 @@ public class MainPage extends BasePage {
     }
 
     public void fillModalFormFieldWithText(String field, String text) {
-        newText = text.replace("@", System.currentTimeMillis() + "@");
+        String newText = text.replace("@", System.currentTimeMillis() + "@");
         WebElement input = driver.findElement(By.xpath("//*[contains(text(),'" + field + "')]/ancestor::elma-form-label/following-sibling::elma-form-control/descendant::input"));
         wait.until(ExpectedConditions.visibilityOf(input));
         input.click();
