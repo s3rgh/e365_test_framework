@@ -1,10 +1,7 @@
 package pages;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -16,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainPage extends BasePage {
 
@@ -72,7 +71,8 @@ public class MainPage extends BasePage {
         } catch (NoSuchElementException e) {
             logger.info("!!!Timezone Popup doesn't shown!!!");
         }
-        isElementDisplayed(By.cssSelector("h1.title"));
+        JavascriptExecutor input = (JavascriptExecutor) driver;
+        assertThat(input.executeScript("return document.readyState").equals("complete")).isEqualTo(true);
     }
 
     public void goToButtonUserProfile() {
