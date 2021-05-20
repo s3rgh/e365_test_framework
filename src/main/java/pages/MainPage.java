@@ -1,6 +1,5 @@
 package pages;
 
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,23 +34,11 @@ public class MainPage extends BasePage {
     WebElement settingsPopOver;
 
     private static String newUnitName;
-    private static Map<WebElement, String> leftMenuUnits;
-    //private static List<WebElement> leftMenuUnitButtons;
-
-/*    public Map<WebElement, String> fillMap() {
-        leftMenuUnitButtons = driver.findElements(By.cssSelector("div > app-navigation-main-item"));
-        Map<WebElement, String> map = new HashMap<>();
-        for (WebElement w : leftMenuUnitButtons) {
-            map.put(w, w.findElement(By.xpath("//span")).getText());
-        }
-        return map;
-    }*/
 
     public MainPage(WebDriver driver) {
         super(driver);
         wait = new WebDriverWait(this.driver, 10);
         PageFactory.initElements(this.driver, this);
-        //leftMenuUnits = fillMap();
     }
 
     public void isElementDisplayed() {
@@ -115,15 +98,7 @@ public class MainPage extends BasePage {
     }
 
     public void isUnitCreated() {
-        //leftMenuUnits = fillMap();
-        //WebElement newUnit = driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']"));
         isElementDisplayed(driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']")));
-/*        for (int i = 0; i < leftMenuUnitButtons.size(); i++) {
-            if (!leftMenuUnitButtons.get(i).findElement(By.xpath("//span")).getText().equals(newUnitName)) {
-                leftMenuUnitButtons.add(driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']")));
-                leftMenuUnits.put(driver.findElement(By.xpath("//app-navigation-main-item/descendant::a[@title='" + newUnitName + "']")), newUnitName);
-            }
-        }*/
     }
 
     public void clickLeftMenuButtonAddUnit() {
